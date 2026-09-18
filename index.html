@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>دعوة زفاف | Ebrahim & Nada</title>
+  <title>دعوة زفاف | إبراهيم & ندى</title>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -71,7 +71,7 @@
     .music-btn.playing { animation: spin 4s linear infinite; }
     @keyframes spin { 100% { transform: rotate(360deg); } }
 
-    /* غلاف الدعوة */
+    /* غلاف الدعوة (من بره إنجليزي) */
     .cover-screen {
       position: absolute;
       top: 0; left: 0;
@@ -113,7 +113,7 @@
 
     .monogram-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 3.2rem;
+      font-size: 3.5rem;
       color: var(--olive-dark);
       font-weight: bold;
       letter-spacing: 2px;
@@ -149,7 +149,7 @@
       margin-top: 15px;
     }
 
-    /* محتوى الدعوة */
+    /* محتوى الدعوة (من جوه عربي) */
     .content-screen { padding: 25px 15px; }
 
     .card-frame {
@@ -164,11 +164,11 @@
       overflow: hidden;
     }
 
-    .names-header {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
+    .arabic-names-header {
+      font-family: 'Aref Ruqaa', serif;
+      font-size: 2.8rem;
       color: var(--olive-dark);
-      margin: 10px 0;
+      margin: 15px 0;
       font-weight: bold;
     }
 
@@ -262,7 +262,7 @@
 
   <canvas id="hearts-canvas"></canvas>
 
-  <!-- مشغل صوت أونلاين لموسيقى/أغنية شيرين كلام عينيه -->
+  <!-- مشغل صوت لأغنية شيرين كلام عينيه -->
   <audio id="wedding-audio" loop preload="auto">
     <source src="https://files.freemusicdownloads.world/dl.php?id=37750&name=Sherine%20-%20Kalam%20Eneih" type="audio/mpeg">
   </audio>
@@ -272,7 +272,7 @@
   </button>
 
   <div class="app-container">
-    <!-- الغلاف -->
+    <!-- الغلاف الخارجي (حروف إنجليزي E & N) -->
     <div class="cover-screen" id="cover">
       <div class="cover-card">
         <div class="floral-bg"></div>
@@ -285,7 +285,7 @@
       </div>
     </div>
 
-    <!-- المحتوى -->
+    <!-- المحتوى الداخلي (عربي) -->
     <div class="content-screen">
       <div class="card-frame">
         <div style="font-family: 'Amiri', serif; font-size: 1.1rem; color: var(--olive-dark); line-height: 1.8; margin-bottom: 15px;">
@@ -299,10 +299,10 @@
           بحضوركم الكريم لحضور عقد قران وزفاف
         </div>
 
-        <div class="names-header">Ebrahim & Nada</div>
-        <div style="font-family:'Playfair Display'; font-size: 1.4rem; color: var(--gold-accent); margin-bottom: 10px;">E & N</div>
+        <!-- الأسماء بالعربي من جوه -->
+        <div class="arabic-names-header">إبراهيم <span style="color:var(--red-heart); font-size:2rem;">♥</span> ندى</div>
 
-        <!-- التقويم الشمسي أكتوبر 2026 مع قلب يوم 2 -->
+        <!-- التقويم (Calendar) مع قلب يوم 2 -->
         <div class="calendar-container">
           <div class="calendar-header">أكتوبر 2026</div>
           <div class="calendar-grid">
@@ -339,7 +339,7 @@
         </a>
       </div>
 
-      <!-- سجل التبريكات -->
+      <!-- سجل التهاني -->
       <div class="wishes-section">
         <h3 style="color: var(--olive-dark); margin-bottom: 10px;">سجل التهاني والتبريكات</h3>
         <input type="text" id="guest-name" placeholder="اسمك الكريم">
