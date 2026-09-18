@@ -9,20 +9,20 @@
   
   <style>
     :root {
-      --bg-beige: #F5F0EB;
-      --card-beige: #FCF9F5;
-      --olive-dark: #2C3E2B;
-      --olive-medium: #4A5D4E;
+      --bg-cream: #FDFBF7;
+      --card-cream: #FAF6F0;
+      --olive-dark: #3B4D3A;
+      --olive-light: #5A7058;
       --gold-accent: #C5A059;
       --red-heart: #D32F2F;
-      --text-dark: #2A332B;
+      --text-dark: #2C332B;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
       font-family: 'Cairo', sans-serif;
-      background-color: var(--olive-dark);
+      background-color: var(--bg-cream);
       color: var(--text-dark);
       overflow-x: hidden;
       min-height: 100vh;
@@ -31,7 +31,7 @@
       align-items: center;
     }
 
-    /* Falling Red Hearts Canvas */
+    /* Canvas القلوب الحمراء المتساقطة */
     #hearts-canvas {
       position: fixed;
       top: 0; left: 0;
@@ -44,13 +44,13 @@
       width: 100%;
       max-width: 450px;
       min-height: 100vh;
-      background: var(--bg-beige);
+      background: var(--bg-cream);
       position: relative;
-      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      box-shadow: 0 0 25px rgba(0,0,0,0.08);
       overflow-y: auto;
     }
 
-    /* Vinyl Music Button */
+    /* زر الموسيقى والأسطوانة */
     .music-btn {
       position: fixed;
       bottom: 20px;
@@ -59,14 +59,14 @@
       background: var(--olive-dark);
       color: var(--gold-accent);
       border: 2px solid var(--gold-accent);
-      width: 50px; height: 50px;
+      width: 52px; height: 52px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 1.2rem;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
       transition: all 0.3s ease;
     }
     .music-btn.playing {
@@ -74,12 +74,12 @@
     }
     @keyframes spin { 100% { transform: rotate(360deg); } }
 
-    /* Cover Screen */
+    /* الغلاف الخارجي للدعوة */
     .cover-screen {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: var(--olive-dark);
+      background: var(--bg-cream);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -94,62 +94,61 @@
       visibility: hidden;
     }
     .cover-card {
-      background: var(--card-beige);
-      border: 2px solid var(--gold-accent);
-      border-radius: 15px;
+      background: var(--card-cream);
+      border: 2px solid var(--olive-dark);
+      border-radius: 20px;
       padding: 40px 25px;
       width: 100%;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      box-shadow: 0 10px 30px rgba(59, 77, 58, 0.1);
       position: relative;
     }
     .cover-title {
       font-family: 'Aref Ruqaa', serif;
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       color: var(--olive-dark);
-      margin: 15px 0 5px;
+      margin: 15px 0 10px;
     }
     .cover-names {
       font-family: 'Aref Ruqaa', serif;
-      font-size: 2rem;
-      color: var(--olive-medium);
+      font-size: 2.2rem;
+      color: var(--olive-light);
       font-weight: 700;
       margin-bottom: 15px;
     }
     .cover-date {
       font-size: 1.1rem;
-      color: var(--olive-medium);
+      color: var(--olive-dark);
       margin-bottom: 25px;
       font-weight: 600;
     }
     .open-btn {
       background: var(--olive-dark);
-      color: var(--bg-beige);
+      color: #FFF;
       border: 1px solid var(--gold-accent);
       padding: 12px 35px;
       font-size: 1.1rem;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s, background 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       font-family: 'Cairo', sans-serif;
       font-weight: bold;
+      transition: transform 0.2s;
     }
     .open-btn:active { transform: scale(0.95); }
 
-    /* Main Content */
+    /* محتوى الدعوة */
     .content-screen {
       padding: 30px 20px;
-      background: var(--bg-beige);
+      background: var(--bg-cream);
     }
     .card-frame {
-      border: 2px solid var(--gold-accent);
+      border: 2px solid var(--olive-dark);
       padding: 25px 15px;
-      border-radius: 15px;
-      background: var(--card-beige);
+      border-radius: 20px;
+      background: var(--card-cream);
       text-align: center;
-      position: relative;
       margin-bottom: 25px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     }
     .header-quran {
       font-family: 'Amiri', serif;
@@ -161,69 +160,56 @@
     }
     .family-names {
       font-size: 0.95rem;
-      color: var(--olive-medium);
+      color: var(--olive-dark);
       line-height: 1.8;
       margin-bottom: 20px;
-      border-bottom: 1px dashed var(--gold-accent);
+      border-bottom: 1px dashed var(--olive-light);
       padding-bottom: 15px;
       font-weight: 600;
     }
-    .couple-names {
-      margin: 20px 0;
-    }
+    .couple-names { margin: 20px 0; }
     .groom-bride {
       font-family: 'Aref Ruqaa', serif;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       color: var(--olive-dark);
       display: inline-block;
     }
     .heart-symbol {
       color: var(--red-heart);
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin: 0 10px;
       animation: pulse 1.5s infinite;
       display: inline-block;
     }
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.25); }
+      50% { transform: scale(1.3); }
     }
 
-    /* Countdown Box */
+    /* العداد التنازلي */
     .countdown-box {
       display: flex;
       justify-content: space-around;
-      background: var(--bg-beige);
-      border: 1px solid var(--gold-accent);
+      background: var(--bg-cream);
+      border: 1px solid var(--olive-light);
       border-radius: 12px;
       padding: 12px 5px;
       margin: 20px 0;
     }
-    .count-unit {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .count-num {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: var(--olive-dark);
-    }
-    .count-label {
-      font-size: 0.75rem;
-      color: var(--olive-medium);
-    }
+    .count-unit { display: flex; flex-direction: column; align-items: center; }
+    .count-num { font-size: 1.4rem; font-weight: bold; color: var(--olive-dark); }
+    .count-label { font-size: 0.75rem; color: var(--olive-light); }
 
-    /* Event Schedule */
+    /* تفاصيل المواقيت والقاعة */
     .schedule-title {
       font-family: 'Aref Ruqaa', serif;
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       color: var(--olive-dark);
       margin-bottom: 15px;
     }
     .event-box {
-      background: var(--bg-beige);
-      border-right: 4px solid var(--olive-medium);
+      background: var(--bg-cream);
+      border-right: 4px solid var(--olive-dark);
       padding: 12px;
       margin-bottom: 12px;
       text-align: right;
@@ -232,12 +218,11 @@
     .event-box h4 { color: var(--olive-dark); font-size: 1.05rem; }
     .event-box p { color: var(--text-dark); font-size: 0.9rem; }
 
-    /* Map Button */
     .map-btn {
       display: inline-block;
       width: 100%;
       background: var(--olive-dark);
-      color: var(--bg-beige);
+      color: #FFF;
       text-decoration: none;
       padding: 12px;
       border-radius: 8px;
@@ -246,15 +231,13 @@
       border: 1px solid var(--gold-accent);
       transition: background 0.3s;
     }
-    .map-btn:hover {
-      background: var(--olive-medium);
-    }
+    .map-btn:hover { background: var(--olive-light); }
 
-    /* Wishes Section */
+    /* سجل التهاني */
     .wishes-section {
-      background: var(--card-beige);
-      border: 1px solid var(--gold-accent);
-      border-radius: 12px;
+      background: var(--card-cream);
+      border: 1px solid var(--olive-dark);
+      border-radius: 15px;
       padding: 20px;
       text-align: center;
       margin-bottom: 30px;
@@ -263,14 +246,14 @@
       width: 100%;
       padding: 10px;
       margin: 8px 0;
-      border: 1px solid #CCC;
-      border-radius: 6px;
+      border: 1px solid #DDD;
+      border-radius: 8px;
       font-family: 'Cairo', sans-serif;
       background: #FFF;
     }
     .send-wish-btn {
       background: var(--olive-dark);
-      color: var(--bg-beige);
+      color: #FFF;
       border: 1px solid var(--gold-accent);
       padding: 10px 25px;
       border-radius: 20px;
@@ -280,12 +263,13 @@
   </style>
 </head>
 <body>
-  <!-- Red Hearts Canvas -->
+
+  <!-- القلوب المتساقطة -->
   <canvas id="hearts-canvas"></canvas>
 
-  <!-- Audio Player (ام كلثوم / حلاوة شمسنا) -->
+  <!-- مشغل الصوت -->
   <audio id="wedding-audio" loop preload="auto">
-    <source src="https://ia800902.us.archive.org/17/items/UmmKulthum/UmmKulthum-AlfLeilaWaLeila.mp3" type="audio/mpeg">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2874/2874-preview.mp3" type="audio/mpeg">
   </audio>
 
   <button class="music-btn" id="music-toggle" onclick="toggleMusic()">
@@ -293,7 +277,7 @@
   </button>
 
   <div class="app-container">
-    <!-- Cover Screen -->
+    <!-- صفحة الغلاف -->
     <div class="cover-screen" id="cover">
       <div class="cover-card">
         <div class="cover-title">دعوة زفاف</div>
@@ -303,7 +287,7 @@
       </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- المحتوى الرئيسي -->
     <div class="content-screen">
       <div class="card-frame">
         <div class="header-quran">
@@ -323,7 +307,7 @@
           <span class="groom-bride">ندى</span>
         </div>
 
-        <!-- Countdown Timer -->
+        <!-- العداد التنازلي -->
         <div class="countdown-box">
           <div class="count-unit"><span class="count-num" id="days">00</span><span class="count-label">يوم</span></div>
           <div class="count-unit"><span class="count-num" id="hours">00</span><span class="count-label">ساعة</span></div>
@@ -347,7 +331,7 @@
           <div class="event-box" style="border-right-color: var(--olive-dark);">
             <h4>عقد القران والزفاف</h4>
             <p>الجمعة الموافق 2026/10/02 - الساعة 8:00 مساءً</p>
-            <p style="margin-top:5px;"><strong>بقاعة الفورسيZone بنادي القوات المسلحة بطلخا</strong></p>
+            <p style="margin-top:5px; font-weight: bold; color: var(--olive-dark);">بقاعة فورسيزونز بنادي القوات المسلحة بطلخا</p>
           </div>
 
           <a href="https://maps.google.com" target="_blank" class="map-btn">
@@ -356,7 +340,7 @@
         </div>
       </div>
 
-      <!-- Guestbook Section -->
+      <!-- سجل التبريكات -->
       <div class="wishes-section">
         <h3 style="color: var(--olive-dark); margin-bottom: 10px;">سجل التبريكات والأمنيات</h3>
         <input type="text" id="guest-name" placeholder="اسمك الكريم">
@@ -368,7 +352,6 @@
   </div>
 
   <script>
-    // Audio Player Toggle
     const audio = document.getElementById('wedding-audio');
     const musicBtn = document.getElementById('music-toggle');
 
@@ -386,10 +369,10 @@
       document.getElementById('cover').classList.add('hidden');
       audio.play().then(() => {
         musicBtn.classList.add('playing');
-      }).catch(e => console.log('Autoplay blocked'));
+      }).catch(e => console.log('Autoplay error handle'));
     }
 
-    // Countdown Logic
+    /* حساب العداد التنازلي */
     const weddingDate = new Date("October 2, 2026 20:00:00").getTime();
     setInterval(() => {
       const now = new Date().getTime();
@@ -402,19 +385,19 @@
       }
     }, 1000);
 
-    // Send Wish
+    /* إرسال التهنئة */
     function sendWish() {
       const name = document.getElementById('guest-name').value;
       const msg = document.getElementById('guest-msg').value;
       if (name && msg) {
         const list = document.getElementById('wishes-list');
-        list.innerHTML = `<div style="background:#EFE8E0; padding:8px; border-radius:5px; margin-top:5px;"><strong>${name}:</strong> ${msg}</div>` + list.innerHTML;
+        list.innerHTML = `<div style="background:#F2EBE1; padding:8px; border-radius:5px; margin-top:5px;"><strong>${name}:</strong> ${msg}</div>` + list.innerHTML;
         document.getElementById('guest-name').value = '';
         document.getElementById('guest-msg').value = '';
       }
     }
 
-    // Falling Red Hearts Animation
+    /* أنيميشن القلوب المتساقطة */
     const canvas = document.getElementById('hearts-canvas');
     const ctx = canvas.getContext('2d');
     let hearts = [];
@@ -427,16 +410,14 @@
     resizeCanvas();
 
     class Heart {
-      constructor() {
-        this.reset();
-      }
+      constructor() { this.reset(); }
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = -20;
         this.size = Math.random() * 10 + 8;
         this.speed = Math.random() * 1.5 + 0.8;
         this.opacity = Math.random() * 0.7 + 0.3;
-        this.color = '#D32F2F'; // Red Hearts
+        this.color = '#D32F2F';
       }
       draw() {
         ctx.save();
@@ -451,25 +432,18 @@
       }
       update() {
         this.y += this.speed;
-        if (this.y > canvas.height) {
-          this.reset();
-        }
+        if (this.y > canvas.height) { this.reset(); }
       }
     }
 
     function initHearts() {
       hearts = [];
-      for (let i = 0; i < 25; i++) {
-        hearts.push(new Heart());
-      }
+      for (let i = 0; i < 25; i++) { hearts.push(new Heart()); }
     }
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      hearts.forEach(heart => {
-        heart.update();
-        heart.draw();
-      });
+      hearts.forEach(heart => { heart.update(); heart.draw(); });
       requestAnimationFrame(animate);
     }
 
