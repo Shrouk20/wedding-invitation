@@ -34,7 +34,6 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
 }
-/* تعديل شاشة الغلاف لتكون ثابتة ومطابقة للمقاس تماماً وتختفي تماماً عند الفتح */
 .envelope-screen {
   position: fixed;
   top: 0; left: 0;
@@ -122,6 +121,8 @@ body {
   background-position: center;
   padding: 40px 20px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 .names-display {
   font-family: 'Aref Ruqaa', serif;
@@ -136,13 +137,15 @@ body {
   letter-spacing: 3px;
 }
 .section-card {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(5px);
   border-radius: 16px;
   padding: 20px;
   margin: 20px 0;
   border: 1px solid rgba(212, 175, 55, 0.3);
   box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+  position: relative;
+  z-index: 2;
 }
 .calendar-title {
   font-family: 'Aref Ruqaa', serif;
@@ -166,9 +169,16 @@ body {
 .cal-date.active-wedding::after {
   content: '♥';
   position: absolute;
-  top: -6px; right: 2px;
-  color: #D89A9E;
-  font-size: 0.75rem;
+  top: -7px; right: 2px;
+  color: #E63946;
+  font-size: 0.85rem;
+  font-weight: bold;
+  animation: heartbeat 1.5s infinite;
+}
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
 }
 .event-info-box {
   text-align: right;
@@ -190,6 +200,8 @@ body {
   margin-top: 15px;
   box-shadow: 0 4px 12px rgba(140, 106, 108, 0.3);
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
 .floating-music-btn {
   position: fixed;
@@ -203,6 +215,28 @@ body {
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
+
+/* تنسيق وتصميم القلوب المتساقطة */
+.falling-heart {
+  position: absolute;
+  top: -10vh;
+  color: #E63946;
+  font-size: 1.2rem;
+  user-select: none;
+  z-index: 1;
+  opacity: 0.7;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
 </style>
 </head>
 <body>
@@ -213,7 +247,6 @@ body {
   <i class="fas fa-music"></i>
 </div>
 
-<!-- شاشة الغلاف الثقيلة والمغطية بالكامل -->
 <div class="envelope-screen" id="envelopeScreen">
   <div class="envelope-wrapper">
     <div class="envelope-flap"></div>
@@ -228,10 +261,10 @@ body {
 </div>
 
 <div class="app-container">
-  <div class="main-content">
+  <main class="main-content" id="mainContent">
     <div class="monogram-tag">E & N</div>
     <div class="names-display">إبراهيم & ندى</div>
-    <div style="font-size: 0.95rem; color: #6E5A56; margin-bottom: 20px; line-height: 1.6;">
+    <div style="font-size: 0.95rem; color: #6E5A56; margin-bottom: 20px; line-height: 1.6; position:relative; z-index:2;">
       يتشرف الحاج/ صابر إبراهيم عطية النجار والعائلة<br>
       واللواء/ إبراهيم السيد الترابي والعائلة<br>
       بحضوركم الكريم لحضور عقد قران وزفاف
@@ -249,33 +282,48 @@ body {
     </div>
     <div class="section-card">
       <div class="event-info-box">
-        <h4 style="color:#8C6A6C;">حنة العروسة</h4>
+        <h4 style="color:#8C6A6C;"><span style="color:#E63946;">❤️</span> حنة العروسة</h4>
         <p style="font-size:0.85rem;">الثلاثاء 2026/09/29 - بأرض مدين</p>
       </div>
       <div class="event-info-box" style="margin-top:8px;">
-        <h4 style="color:#8C6A6C;">حنة العريس</h4>
+        <h4 style="color:#8C6A6C;"><span style="color:#E63946;">❤️</span> حنة العريس</h4>
         <p style="font-size:0.85rem;">الخميس 2026/10/01 - بالبساتين</p>
       </div>
       <div class="event-info-box" style="margin-top:8px; border-right-color:#5C4345;">
-        <h4 style="color:#8C6A6C;">عقد القران والزفاف</h4>
+        <h4 style="color:#8C6A6C;"><span style="color:#E63946;">❤️</span> عقد القران والزفاف</h4>
         <p style="font-size:0.85rem;">الجمعة 2026/10/02 - الساعة 8:00 مساءً</p>
         <p style="font-size:0.88rem; font-weight:bold; color:#5C4345; margin-top:3px;">بقاعة فورسيزونز بنادي القوات المسلحة بطلخا</p>
       </div>
-      <!-- ضعي رابط خرائط جوجل الخاص بقاعة طلخا مكان علامات التنصيص هنا -->
-      <a href="https://maps.google.com" target="_blank" class="btn-map">
+      <a href="https://maps.app.goo.gl/wQrerYo5T4DHWnPN8?g_st=ic" target="_blank" class="btn-map">
         <i class="fas fa-location-dot"></i> موقع القاعة على Google Maps
       </a>
     </div>
-  </div>
+  </main>
 </div>
 <script>
 const audio = document.getElementById('wedding-audio');
 function openEnvelope() {
   document.getElementById('envelopeScreen').classList.add('hidden');
   audio.play().catch(e => console.log('Audio autoplay handled'));
+  createFallingHearts();
 }
 function toggleMusic() {
   if (audio.paused) { audio.play(); } else { audio.pause(); }
+}
+function createFallingHearts() {
+  const container = document.getElementById('mainContent');
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.classList.add('falling-heart');
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.animationDuration = (Math.random() * 3 + 3) + 's'; // سرعة متغيرة بين 3 و 6 ثواني
+    heart.style.fontSize = (Math.random() * 0.8 + 0.8) + 'rem';
+    container.appendChild(heart);
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }, 400); // ينزل قلب كل جزء من الثانية
 }
 </script>
 </body>
